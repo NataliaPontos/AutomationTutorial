@@ -24,7 +24,8 @@ public class WebTableTest extends SharedData {
         By webTableSubMenu = By.xpath("//span[text()='Web Tables']");
         elementHelper.clickLocator(webTableSubMenu);
 
-        List<WebElement> tableRowsList = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
+        By tableRowsListElement = By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']");
+        List<WebElement> tableRowsList = driver.findElements(tableRowsListElement);
         Assert.assertEquals(tableRowsList.size(), 3, "Valoarea initiala a tabelului nu este 3.");
 
         //identificm un element
@@ -59,7 +60,7 @@ public class WebTableTest extends SharedData {
         By submitElement = By.id("submit");
         elementHelper.clickLocator(submitElement);
 
-        tableRowsList = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
+        tableRowsList = driver.findElements(tableRowsListElement);
         Assert.assertEquals(tableRowsList.size(), 4, "Valoarea actuala a tabelului nu este 4.");
         String expectedRow = tableRowsList.get(3).getText();
         Assert.assertTrue(expectedRow.contains(firstNameValue));
@@ -75,35 +76,29 @@ public class WebTableTest extends SharedData {
         By editElement = By.id("edit-record-4");
         elementHelper.clickLocator(editElement);
 
-        WebElement editFirstNameElement = driver.findElement(By.id("firstName"));
+        By editFirstNameElement = By.id("firstName");
         String editFirstNAmeElementValue = "Ionescu";
-        editFirstNameElement.clear();
-        editFirstNameElement.sendKeys(editFirstNAmeElementValue);
+        elementHelper.clearFilledLocator(editFirstNameElement, editFirstNAmeElementValue);
 
-        WebElement editLastNameElement = driver.findElement(By.id("lastName"));
+        By editLastNameElement = By.id("lastName");
         String editLastNAmeElementValue = "Aira";
-        editLastNameElement.clear();
-        editLastNameElement.sendKeys(editLastNAmeElementValue);
+        elementHelper.clearFilledLocator(editLastNameElement, editLastNAmeElementValue);
 
-        WebElement editUserEmailElement = driver.findElement(By.id("userEmail"));
+        By editUserEmailElement = By.id("userEmail");
         String editUserEmailElementValue = "modificare@gmail.com";
-        editUserEmailElement.clear();
-        editUserEmailElement.sendKeys(editUserEmailElementValue);
+        elementHelper.clearFilledLocator(editUserEmailElement, editUserEmailElementValue);
 
-        WebElement editAgeElement = driver.findElement(By.id("age"));
+        By editAgeElement = By.id("age");
         String editAgeElementValue = "25";
-        editAgeElement.clear();
-        editAgeElement.sendKeys(editAgeElementValue);
+        elementHelper.clearFilledLocator(editAgeElement, editAgeElementValue);
 
-        WebElement editSalaryElement = driver.findElement(By.id("salary"));
+        By editSalaryElement = By.id("salary");
         String editSalaryElementValue = "6000";
-        editSalaryElement.clear();
-        editSalaryElement.sendKeys(editSalaryElementValue);
+        elementHelper.clearFilledLocator(editSalaryElement, editSalaryElementValue);
 
-        WebElement editDepartmentElement = driver.findElement(By.id("department"));
+        By editDepartmentElement = By.id("department");
         String editDepartmentElementValue = "Automation";
-        editDepartmentElement.clear();
-        editDepartmentElement.sendKeys(editDepartmentElementValue);
+        elementHelper.clearFilledLocator(editDepartmentElement, editDepartmentElementValue);
 
         By submitEditedElement = By.id("submit");
         elementHelper.clickLocator(submitEditedElement);
@@ -121,7 +116,7 @@ public class WebTableTest extends SharedData {
         By deleteElement=By.id("delete-record-4");
         elementHelper.clickLocator(deleteElement);
 
-        tableRowsList = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
+        tableRowsList = driver.findElements(tableRowsListElement);
         Assert.assertEquals(tableRowsList.size(), 3, "Valoarea actuala a tabelului nu este 4.");
 
 
