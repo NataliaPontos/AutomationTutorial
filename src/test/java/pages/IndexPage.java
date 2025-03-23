@@ -19,4 +19,11 @@ public class IndexPage {
     public void enterOnAlertSubMEnu(){
         elementHelper.clickJSLocator(IndexLocators.alertsSubMenu);
     }
+    public void enterOnBrowserWindowSubmenu(){
+        elementHelper.clickLocator(IndexLocators.browserSubMenu);
+    }
+    public void enterOnFrameSubmenu(){
+        elementHelper.clickLocator(IndexLocators.framesSubMenu);
+    }
+
 }
