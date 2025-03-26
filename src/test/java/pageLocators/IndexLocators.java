@@ -10,5 +10,7 @@ public class IndexLocators {
     public static final By framesSubMenu = By.xpath("//span[text()='Frames']");
     public static final By formsMenu = By.xpath("//h5[text()='Forms']");
     public static final By practiceFormSubMenu = By.xpath("//span[text()='Practice Form']");
+    public static final By elmenentsMenu = By.xpath("//h5[text()='Elements']");
+    public static final By webTableSubMenu = By.xpath("//span[text()='Web Tables']");
 
 }
