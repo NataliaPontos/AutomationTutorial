@@ -1,5 +1,6 @@
 package sharedData;
 
+import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterMethod;
@@ -11,6 +12,7 @@ public class SharedData {
     //Aceasta clasa are ca rol sa deschida/inchida un browser
     //Vom face acest lucru folosind adnotari de TestNg
     public WebDriver driver;
+    public String nameTest;
 
     @BeforeMethod
     public void preparingEnvironmrnt() {
@@ -20,10 +22,17 @@ public class SharedData {
         //facem browserul in modul maximaze
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        nameTest = this.getClass().getSimpleName();
+        LoggerUtility.startTest(nameTest);
+
     }
 
     @AfterMethod
-    public void clearEnvironment(){
+    public void clearEnvironment() {
         driver.quit();
+
+        nameTest = this.getClass().getSimpleName();
+        LoggerUtility.finishTest(nameTest);
     }
 }
